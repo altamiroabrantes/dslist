@@ -27,5 +27,10 @@ public class GameService {
 	public List<GameMinDTO> findAll() {
 		return gameRepository.findAll().stream().map(x -> new GameMinDTO(x)).toList();
 	}
+	
+	@Transactional(readOnly = true)
+	public List<GameMinDTO> findByList(Long idList) {
+		return gameRepository.searchByList(idList).stream().map(x -> new GameMinDTO(x)).toList();
+	}
 
 }
